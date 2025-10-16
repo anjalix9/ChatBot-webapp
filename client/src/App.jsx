@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ChatRoom from "./components/ChatRoom";
+import ChatRoom from "./components/Chatroom";
 import io from "socket.io-client";
 import "./App.css";
 
