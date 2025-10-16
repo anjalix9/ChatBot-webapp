@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../App.css";
+import ChatRoom from "./components/chatroom";
 
 function ChatRoom({ socket, username, room }) {
   const [message, setMessage] = useState("");
