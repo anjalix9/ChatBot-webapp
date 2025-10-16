@@ -89,14 +89,7 @@ body {
 .input-box button:hover {
   background-color: #52e0c4;
 }
-.app-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: #0a192f;
-  color: white;
-}
+
 
 .joinChatContainer {
   display: flex;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "../App.css";
-import ChatRoom from "./components/chatroom";
 
 function ChatRoom({ socket, username, room }) {
   const [message, setMessage] = useState("");
@@ -12,10 +12,27 @@ function ChatRoom({ socket, username, room }) {
         room: room,
         author: username,
         message: message,
-        time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
+        time: new Date(Date.now()).getHours().toString().padStart(2, '0') + ":" + new Date(Date.now()).getMinutes().toString().padStart(2, '0'),
       };
       await socket.emit("send_message", msgData);
       setChatMessages((list) => [...list, msgData]);
+
+      // If room is 'bot', send to chatbot API
+      if (room === 'bot') {
+        try {
+          const response = await axios.post('http://localhost:5000/chatbot', { message });
+          const botReply = {
+            room: room,
+            author: 'Bot',
+            message: response.data.reply,
+            time: new Date(Date.now()).getHours().toString().padStart(2, '0') + ":" + new Date(Date.now()).getMinutes().toString().padStart(2, '0'),
+          };
+          setChatMessages((list) => [...list, botReply]);
+        } catch (error) {
+          console.error('Error fetching bot reply:', error);
+        }
+      }
+
       setMessage("");
     }
   };
