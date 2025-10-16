@@ -21,6 +21,11 @@ body {
   display: flex;
   flex-direction: column;
   padding: 16px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #0a192f;
+  color: white;
 }
 
 .title {
