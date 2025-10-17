@@ -16,5 +16,5 @@ This project allows users to chat with each other, create chat rooms, and intera
 
 ---
 
-## 🏗️ Project Structure
+
 
